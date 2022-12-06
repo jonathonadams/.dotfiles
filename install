@@ -1,7 +1,7 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 
 if [[ -z $STOW_FOLDERS ]]; then
-    STOW_FOLDERS="git"
+    STOW_FOLDERS="git,gh,zsh,direnv,yabai,skhd,sketchybar"
 fi
 
 if [[ -z $DOTFILES ]]; then
