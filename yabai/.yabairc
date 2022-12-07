@@ -5,7 +5,6 @@
 # to it via an XPC connection regardless of wether StageManager is activated or not. 
 # I have found that it is OK to unload the process when using yabai, which makes a 
 # lot of things faster, battery last longer and stops the apple window manager interfering with yabai:
-#
 # https://github.com/koekeishiya/yabai/issues/1297#issuecomment-1318403190
 launchctl unload -F /System/Library/LaunchAgents/com.apple.WindowManager.plist
 
@@ -23,6 +22,7 @@ yabai -m signal --add event=display_added action="sleep 1 && $HOME/.config/yabai
 yabai -m signal --add event=display_removed action="sleep 1 && $HOME/.config/yabai/create_spaces.sh"
 
 # ===== Setup spaces ============================
+
 $HOME/.dotfiles/yabai/create_spaces.sh
 
 # ===== Tiling settings =========================
@@ -68,6 +68,7 @@ yabai -m config insert_feedback_color       0xE02d74da # 0xff9dd274
 
 # move some apps automatically to specific spaces
 yabai -m rule --add app="^Terminal$" space=^1
+yabai -m rule --add app="^kitty$" space=^1
 yabai -m rule --add app="^HttPie$" space=^1
 yabai -m rule --add app="^Code$" space=^2
 yabai -m rule --add app="^Safari$" space=^3

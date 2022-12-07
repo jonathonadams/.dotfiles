@@ -85,20 +85,27 @@ ZSH_THEME="robbyrussell"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
+
+# Load the desired Catppuccin theme before loading the zsh-syntax-highlighting theme
+# source $ZSH/custom/plugins/catppuccin/themes/catppuccin_macchiato-zsh-syntax-highlighting.zsh
+
+
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git
+  autoupdate
   zsh-autosuggestions
+  git
   direnv
   pyenv
   poetry
-  zsh-nvm
+  zsh-syntax-highlighting
 )
 
+# zsh-nvm
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
