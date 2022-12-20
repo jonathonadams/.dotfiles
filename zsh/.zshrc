@@ -24,6 +24,7 @@ export GOPATH=$HOME/go
 # Add Rust to environment PATH
 export PATH=$HOME/.cargo/bin:$PATH
 
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -98,14 +99,9 @@ ZSH_THEME="robbyrussell"
 plugins=(
   autoupdate
   zsh-autosuggestions
-  git
-  direnv
-  pyenv
-  poetry
   zsh-syntax-highlighting
 )
 
-# zsh-nvm
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -133,7 +129,8 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-#
+
+
 
 # Update sketchbar brew icon after running any brew commands
 function brew() {
@@ -143,4 +140,13 @@ function brew() {
     sketchybar --trigger brew_update
   fi
 }
+
+# Add direnv hook
+eval "$(direnv hook zsh)"
+
+# Load fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Where should I put you?
+bindkey -s ^f "tmux-sessionizer\n"
 

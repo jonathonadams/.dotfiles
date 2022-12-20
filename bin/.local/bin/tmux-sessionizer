@@ -1,0 +1,34 @@
+#!/usr/bin/env bash 
+
+if [[ $# -eq 1 ]]; then
+    selected=$1
+else
+    selected=$(fd -H -d 1 -t d --search-path ~/ --search-path ~/personal --search-path ~/work | fzf)
+fi
+
+if [[ -z $selected ]]; then
+    exit 0
+fi
+
+session_name=$(basename "$selected" | tr . _)
+tmux_running=$(pgrep tmux)
+
+# If not running then just create a new session
+if [[ -z $tmux_running ]]; then
+    tmux new-session -d -s $selected_name -c $selected
+fi
+
+
+# Create session if it does not exist
+if ! tmux has-session -t=$session_name 2> /dev/null; then
+    tmux new-session -d -s $session_name -c $selected
+fi
+
+# Attach if not currently in tmux, or swith if you are
+if [[ -z $TMUX ]]; then
+    # Not currently attached
+    tmux attach-session -t $session_name
+else
+    # Switch client
+    tmux switch-client -t $session_name
+fi

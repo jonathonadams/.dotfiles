@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 if [[ -z $STOW_FOLDERS ]]; then
-    STOW_FOLDERS="git,gh,zsh,yabai,skhd,sketchybar,kitty,direnv"
+    STOW_FOLDERS="bin,tmux,git,zsh,yabai,skhd,config"
 fi
 
 if [[ -z $DOTFILES ]]; then
@@ -15,4 +15,8 @@ do
     stow -D $folder
     stow $folder
 done
+popd
+
+pushd ./personal
+./stow
 popd
