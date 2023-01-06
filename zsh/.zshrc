@@ -126,9 +126,9 @@ source $ZSH/oh-my-zsh.sh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+# Aliases
+alias vi=nvim
+alias vim=nvim
 
 
 
@@ -147,6 +147,6 @@ eval "$(direnv hook zsh)"
 # Load fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# Where should I put you?
+# Should this be in skhd?
 bindkey -s ^f "tmux-sessionizer\n"
 

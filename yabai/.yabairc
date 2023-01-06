@@ -11,7 +11,7 @@ launchctl unload -F /System/Library/LaunchAgents/com.apple.WindowManager.plist
 # ===== Loading Scripting Additions ============
 
 # See: https://github.com/koekeishiya/yabai/wiki/Installing-yabai-(latest-release)#macos-big-sur---automatically-load-scripting-addition-on-startup
-sudo yabai --load-sa
+# sudo yabai --load-sa
 
 # ===== Yabai events ============================
 yabai -m signal --add event=window_destroyed action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse"
