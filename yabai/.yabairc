@@ -11,7 +11,7 @@ launchctl unload -F /System/Library/LaunchAgents/com.apple.WindowManager.plist
 # ===== Loading Scripting Additions ============
 
 # See: https://github.com/koekeishiya/yabai/wiki/Installing-yabai-(latest-release)#macos-big-sur---automatically-load-scripting-addition-on-startup
-# sudo yabai --load-sa
+sudo yabai --load-sa
 
 # ===== Yabai events ============================
 yabai -m signal --add event=window_destroyed action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse"
@@ -32,8 +32,8 @@ $HOME/.dotfiles/yabai/create_spaces.sh
 
 yabai -m config layout                      stack
 
-yabai -m config top_padding                 58
-yabai -m config bottom_padding              12 
+yabai -m config top_padding                 47 # sketchybar height 39, padding 4
+yabai -m config bottom_padding              4
 yabai -m config left_padding                4
 yabai -m config right_padding               4 
 yabai -m config window_gap                  4
