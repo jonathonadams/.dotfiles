@@ -8,21 +8,29 @@ export ZSH="$HOME/.oh-my-zsh"
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
-# Add Poetry to the $PATH
+# Add  ~/.local/bin/ to $PATH
 export PATH=$HOME/.local/bin:$PATH
+
 # Set the poetry config path (default is terrible on mac)
 export POETRY_CONFIG_DIR=~/.config/pypoetry
-
-# Setup Pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init --path)"
 
 # Set the path to all go src files (this is the default anyway)
 export GOPATH=$HOME/go
 
 # Add Rust to environment PATH
 export PATH=$HOME/.cargo/bin:$PATH
+
+# The next line updates PATH for the Google Cloud SDK.
+export PATH=~/google-cloud-sdk/bin:$PATH
+
+
+export PYENV_ROOT="$HOME/.pyenv" 
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)" 
+
+
+
+eval "$(direnv hook zsh)"
 
 
 # Set name of the theme to load --- if set to "random", it will
@@ -127,7 +135,6 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Aliases
-alias vi=nvim
 alias vim=nvim
 
 
@@ -141,12 +148,11 @@ function brew() {
   fi
 }
 
-# Add direnv hook
-eval "$(direnv hook zsh)"
 
 # Load fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Should this be in skhd?
 bindkey -s ^f "tmux-sessionizer\n"
+
 
