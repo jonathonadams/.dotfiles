@@ -49,7 +49,8 @@ function setup_space {
 
 setup_space 1 terminal 
 setup_space 2 code
-setup_space 3 web
-setup_space 4 media
-setup_space 5 admin
-setup_space 6 other
+setup_space 3 chrome # work
+setup_space 4 brave # perorman
+setup_space 5 slack 
+setup_space 6 messager 
+setup_space 7 spotify
