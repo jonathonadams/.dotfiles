@@ -15,7 +15,7 @@ tmux_running=$(pgrep tmux)
 
 # If not running then just create a new session
 if [[ -z $tmux_running ]]; then
-    tmux new-session -d -s $selected_name -c $selected
+    tmux new-session -d -s $session_name -c $selected
 fi
 
 

@@ -1,35 +1,9 @@
 #!/bin/sh
 
-# DESIRED_SPACES_PER_DISPLAY=4
-# CURRENT_SPACES="$(yabai -m query --displays | jq -r '.[].spaces | @sh')"
-
-# DELTA=0
-# while read -r line
-# do
-#   LAST_SPACE="$(echo "${line##* }")"
-#   LAST_SPACE=$(($LAST_SPACE+$DELTA))
-#   EXISTING_SPACE_COUNT="$(echo "$line" | wc -w)"
-#   MISSING_SPACES=$(($DESIRED_SPACES_PER_DISPLAY - $EXISTING_SPACE_COUNT))
-#   if [ "$MISSING_SPACES" -gt 0 ]; then
-#     for i in $(seq 1 $MISSING_SPACES)
-#     do
-#       yabai -m space --create "$LAST_SPACE"
-#       LAST_SPACE=$(($LAST_SPACE+1))
-#     done
-#   elif [ "$MISSING_SPACES" -lt 0 ]; then
-#     for i in $(seq 1 $((-$MISSING_SPACES)))
-#     do
-#       yabai -m space --destroy "$LAST_SPACE"
-#       LAST_SPACE=$(($LAST_SPACE-1))
-#     done
-#   fi
-#   DELTA=$(($DELTA+$MISSING_SPACES))
-# done <<< "$CURRENT_SPACES"
-
-
-# Destroy all spaces larger than 6
-for _ in $(yabai -m query --spaces | jq '.[].index | select(. > 6)'); do
-  yabai -m space --destroy 7
+DESIRED_SPACES=8
+# Destroy all spaces greater than the desired scaces
+for _ in $(yabai -m query --spaces | jq ".[].index | select(. > ${DESIRED_SPACES} - 1)"); do
+  yabai -m space --destroy $((${DESIRED_SPACES} + 1))
 done
 
 # Function to create a space
@@ -47,10 +21,11 @@ function setup_space {
   yabai -m space "$idx" --label "$name"
 }
 
-setup_space 1 terminal 
-setup_space 2 code
-setup_space 3 chrome # work
-setup_space 4 brave # perorman
-setup_space 5 slack 
-setup_space 6 messager 
+setup_space 1 terminal      # Kitty
+setup_space 2 code          # VS Cods
+setup_space 3 web
+setup_space 4 email-calendar 
+setup_space 5 slack
+setup_space 6 messeges
 setup_space 7 spotify
+setup_space 8 other
