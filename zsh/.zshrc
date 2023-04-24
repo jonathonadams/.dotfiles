@@ -137,18 +137,6 @@ source $ZSH/oh-my-zsh.sh
 # Aliases
 alias vim=nvim
 
-
-
-# Update sketchbar brew icon after running any brew commands
-function brew() {
-  command brew "$@" 
-
-  if [[ $* =~ "upgrade" ]] || [[ $* =~ "update" ]] || [[ $* =~ "outdated" ]]; then
-    sketchybar --trigger brew_update
-  fi
-}
-
-
 # Load fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 

@@ -17,6 +17,6 @@ do
 done
 popd
 
-pushd ./personal
+pushd ~/.dotfiles/personal
 ./stow
 popd
