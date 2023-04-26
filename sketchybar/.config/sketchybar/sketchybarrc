@@ -1,4 +1,5 @@
-#!/usr/bin/env sh
+#!/bin/bash
+
 
 source "$HOME/.config/sketchybar/colors.sh" # Loads all defined colors
 source "$HOME/.config/sketchybar/icons.sh" # Loads all defined icons
@@ -9,57 +10,80 @@ PLUGIN_DIR="$HOME/.config/sketchybar/plugins" # Directory where all the plugin s
 FONT="Dank Mono" # Needs to have Regular, Bold, Semibold, Heavy and Black variants
 PADDINGS=3 # All paddings use this value (icon, label, background)
 
-# Unload the macOS on screen indicator overlay for volume change
-launchctl unload -F /System/Library/LaunchAgents/com.apple.OSDUIHelper.plist > /dev/null 2>&1 &
+# Setting up and starting the helper process
+HELPER=git.jadams.helper
+killall helper
+(cd $CONFIG_DIR/helper && make)
+$CONFIG_DIR/helper/helper $HELPER > /dev/null 2>&1 &
 
-# Setting up the general bar appearance and default values
-sketchybar --bar     height=39                                         \
-                     color=$BAR_COLOR                                  \
-                     shadow=on                                         \
-                     position=top                                      \
-                     sticky=on                                         \
-                     padding_right=4                                   \
-                     padding_left=4                                    \
-                     corner_radius=6                                   \
-                     y_offset=4                                        \
-                     margin=4                                          \
-                     blur_radius=20                                    \
-                     notch_width=0                                     \
-                                                                       \
-           --default updates=when_shown                                \
-                     icon.font="$FONT:Bold:14.0"                       \
-                     icon.color=$ICON_COLOR                            \
-                     icon.padding_left=$PADDINGS                       \
-                     icon.padding_right=$PADDINGS                      \
-                     label.font="$FONT:Semibold:13.0"                  \
-                     label.color=$LABEL_COLOR                          \
-                     label.padding_left=$PADDINGS                      \
-                     label.padding_right=$PADDINGS                     \
-                     background.padding_right=$PADDINGS                \
-                     background.padding_left=$PADDINGS                 \
-                     background.height=26                              \
-                     background.corner_radius=9                        \
-                     popup.background.border_width=2                   \
-                     popup.background.corner_radius=11                 \
-                     popup.background.border_color=$POPUP_BORDER_COLOR \
-                     popup.background.color=$POPUP_BACKGROUND_COLOR    \
-                     popup.background.shadow.drawing=on
+# Setting up the general bar appearance of the bar
+bar=(
+  display=main # main/all
+  height=41
+  color=$BAR_COLOR
+  border_width=1
+  border_color=$BAR_BORDER_COLOR
+  shadow=off
+  position=top
+  sticky=on
+  blur_radius=0
+  
+  # Use these as settings for the bar to to floating
+  y_offset=2
+  margin=4
+  corner_radius=10
+  padding_right=6
+  padding_left=6
+  
+  # Use these as settings for the bar to to be fixed with no gap
+  # y_offset=-2
+  # margin=-4
+  # padding_right=10
+  # padding_left=10
+)
+
+sketchybar --bar "${bar[@]}"
+
+# Setting up default values
+defaults=(
+  updates=when_shown
+  icon.font="$FONT:Bold:14.0"
+  icon.color=$ICON_COLOR
+  icon.padding_left=$PADDINGS
+  icon.padding_right=$PADDINGS
+  label.font="$FONT:Semibold:13.0"
+  label.color=$LABEL_COLOR
+  label.padding_left=$PADDINGS
+  label.padding_right=$PADDINGS
+  padding_right=$PADDINGS
+  padding_left=$PADDINGS
+  background.height=26
+  background.corner_radius=9
+  background.border_width=2
+  popup.background.border_width=2
+  popup.background.corner_radius=9
+  popup.background.border_color=$POPUP_BORDER_COLOR
+  popup.background.color=$POPUP_BACKGROUND_COLOR
+  popup.blur_radius=20
+  popup.background.shadow.drawing=on
+)
+
+sketchybar --default "${defaults[@]}"
 
 # Left
-source "$ITEM_DIR/apple.sh"
-source "$ITEM_DIR/spaces.sh"
-source "$ITEM_DIR/front_app.sh"
+source $ITEM_DIR/apple.sh
+source $ITEM_DIR/spaces.sh
 
-# Center
-source "$ITEM_DIR/spotify.sh"
+# Right of notch
+source $ITEM_DIR/front_app.sh
 
 # Right
 source "$ITEM_DIR/calendar.sh"
-source "$ITEM_DIR/volume.sh"
-source "$ITEM_DIR/battery.sh"
-# source "$ITEM_DIR/brew.sh"
+source "$ITEM_DIR/brew.sh"
 source "$ITEM_DIR/github.sh"
-# source "$ITEM_DIR/divider.sh"
+source "$ITEM_DIR/battery.sh"
+source "$ITEM_DIR/volume.sh"
+source "$ITEM_DIR/cpu.sh"
 
 # Forcing all item scripts to run (never do this outside of sketchybarrc)
 sketchybar --update

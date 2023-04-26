@@ -23,11 +23,9 @@ export PATH=$HOME/.cargo/bin:$PATH
 # The next line updates PATH for the Google Cloud SDK.
 export PATH=~/google-cloud-sdk/bin:$PATH
 
-
 export PYENV_ROOT="$HOME/.pyenv" 
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)" 
-
 
 
 eval "$(direnv hook zsh)"
@@ -135,12 +133,13 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Aliases
+alias ssh="TERM=xterm-256color ssh"
 alias vim=nvim
 
 # Load fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Should this be in skhd?
-bindkey -s ^f "tmux-sessionizer\n"
+bindkey -s ^f "tmux-sessions\n"
 
 
