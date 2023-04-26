@@ -32,7 +32,7 @@ $HOME/.dotfiles/yabai/create_spaces.sh
 yabai -m config layout                      stack
 
                                             # pixel heigth of the notch is 32
-yabai -m config external_bar                "main:43:0" # sketchybar height 39, top padding 4
+yabai -m config external_bar                "main:43:0" # sketchybar height 41, top padding 2
 yabai -m config top_padding                 4 
 yabai -m config bottom_padding              4
 yabai -m config left_padding                4
@@ -79,8 +79,8 @@ yabai -m rule --add app="^Firefox$" space=^3
 yabai -m rule --add app="^Brave Browser$" space=^3
 yabai -m rule --add app="^Mail$" space=^4
 yabai -m rule --add app="^Slack$" space=5
+yabai -m rule --add app="^Spotify$" space=5
 yabai -m rule --add app="^Messages$" space=6
-yabai -m rule --add app="^Spotify$" space=7
 
 # ===== List of rules ===========================
 yabai -m rule --add app="^(Calculator|Software Update|Dictionary|VLC|System Preferences|System Settings|Archive Utility|Python|Activity Monitor)$" manage=off

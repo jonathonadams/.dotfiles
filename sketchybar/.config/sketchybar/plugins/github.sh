@@ -13,15 +13,15 @@ update() {
     args+=(--set $NAME label="$COUNT")
   fi
 
-  PREV_COUNT=$(sketchybar --query github.bell | jq -r .label.value)
+  PREV_COUNT=$(sketchybar --query github.octocat | jq -r .label.value)
   # For sound to play around with:
   # afplay /System/Library/Sounds/Morse.aiff
 
   args+=(--remove '/github.notification\.*/')
 
   COUNTER=0
-  COLOR=$BLUE
-  args+=(--set github.bell icon.color=$COLOR)
+  COLOR=$WHITE
+  args+=(--set github.octocat icon.color=$COLOR)
 
   while read -r repo url type title 
   do
@@ -48,7 +48,7 @@ update() {
     if [ "$IMPORTANT" != "" ]; then
       COLOR=$RED
       ICON=􀁞
-      args+=(--set github.bell icon.color=$COLOR)
+      args+=(--set github.octocat icon.color=$COLOR)
     fi
     
     notification=(
@@ -57,10 +57,10 @@ update() {
       icon.padding_left="$PADDING"
       label.padding_right="$PADDING"
       icon.color=$COLOR
-      position=popup.github.bell
+      position=popup.github.octocat
       icon.background.color=$COLOR
       drawing=on
-      click_script="open $URL; sketchybar --set github.bell popup.drawing=off"
+      click_script="open $URL; sketchybar --set github.octocat popup.drawing=off"
     )
 
     args+=(--clone github.notification.$COUNTER github.template \
@@ -70,7 +70,7 @@ update() {
   sketchybar -m "${args[@]}" > /dev/null
 
   if [ $COUNT -gt $PREV_COUNT ] 2>/dev/null || [ "$SENDER" = "forced" ]; then
-    sketchybar --animate tanh 15 --set github.bell label.y_offset=5 label.y_offset=0
+    sketchybar --animate tanh 15 --set github.octocat label.y_offset=5 label.y_offset=0
   fi
 }
 

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 zen_on() {
-  sketchybar --set github.bell drawing=off \
+  sketchybar --set github.octocat drawing=off \
              --set apple.logo drawing=off \
              --set '/cpu.*/' drawing=off \
              --set calendar icon.drawing=off \
@@ -12,7 +12,7 @@ zen_on() {
 }
 
 zen_off() {
-  sketchybar --set github.bell drawing=on \
+  sketchybar --set github.octocat drawing=on \
              --set apple.logo drawing=on \
              --set '/cpu.*/' drawing=on \
              --set calendar icon.drawing=on \

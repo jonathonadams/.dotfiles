@@ -25,8 +25,6 @@ meh - e : yabai -m space --focus 3
 meh - u : yabai -m space --focus 4
 meh - h : yabai -m space --focus 5
 meh - t : yabai -m space --focus 6
-meh - n : yabai -m space --focus 7
-meh - s : yabai -m space --focus 8
 
 
 # Equalize size of windows

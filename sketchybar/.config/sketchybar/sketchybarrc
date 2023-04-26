@@ -7,7 +7,7 @@ source "$HOME/.config/sketchybar/icons.sh" # Loads all defined icons
 ITEM_DIR="$HOME/.config/sketchybar/items" # Directory where the items are configured
 PLUGIN_DIR="$HOME/.config/sketchybar/plugins" # Directory where all the plugin scripts are stored
 
-FONT="SF Pro" # Needs to have Regular, Bold, Semibold, Heavy and Black variants
+FONT="Dank Mono" # Needs to have Regular, Bold, Semibold, Heavy and Black variants
 PADDINGS=3 # All paddings use this value (icon, label, background)
 
 # Setting up and starting the helper process
@@ -18,17 +18,28 @@ $CONFIG_DIR/helper/helper $HELPER > /dev/null 2>&1 &
 
 # Setting up the general bar appearance of the bar
 bar=(
-  height=45
+  display=main # main/all
+  height=41
   color=$BAR_COLOR
-  border_width=2
+  border_width=1
   border_color=$BAR_BORDER_COLOR
   shadow=off
   position=top
   sticky=on
-  padding_right=10
-  padding_left=10
-  y_offset=-5
-  margin=-2
+  blur_radius=0
+  
+  # Use these as settings for the bar to to floating
+  y_offset=2
+  margin=4
+  corner_radius=10
+  padding_right=6
+  padding_left=6
+  
+  # Use these as settings for the bar to to be fixed with no gap
+  # y_offset=-2
+  # margin=-4
+  # padding_right=10
+  # padding_left=10
 )
 
 sketchybar --bar "${bar[@]}"
@@ -62,6 +73,8 @@ sketchybar --default "${defaults[@]}"
 # Left
 source $ITEM_DIR/apple.sh
 source $ITEM_DIR/spaces.sh
+
+# Right of notch
 source $ITEM_DIR/front_app.sh
 
 # Right

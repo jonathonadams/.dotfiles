@@ -1,12 +1,11 @@
 #!/bin/bash
 
 POPUP_CLICK_SCRIPT="sketchybar --set \$NAME popup.drawing=toggle"
-# icon=$BELL
-github_bell=(
+
+github_octocat=(
   update_freq=180
   icon=":git_hub:"
-  icon.font="$FONT:Regular:15.0"
-  icon.color=$BLUE
+  icon.font="sketchybar-app-font:Regular:16.0"
   label=$LOADING
   label.highlight_color=$BLUE
   popup.align=right
@@ -23,11 +22,11 @@ github_template=(
   icon.background.y_offset=-12
 )
 
-sketchybar --add item github.bell right                 \
-           --set github.bell "${github_bell[@]}"        \
-           --subscribe github.bell  mouse.entered       \
-                                    mouse.exited        \
-                                    mouse.exited.global \
-                                                        \
-           --add item github.template popup.github.bell \
+sketchybar --add item github.octocat right                 \
+           --set github.octocat "${github_octocat[@]}"     \
+           --subscribe github.octocat  mouse.entered       \
+                                    mouse.exited           \
+                                    mouse.exited.global    \
+                                                           \
+           --add item github.template popup.github.octocat \
            --set github.template "${github_template[@]}"
