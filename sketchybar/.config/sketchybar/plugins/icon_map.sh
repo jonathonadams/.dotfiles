@@ -80,6 +80,9 @@ case $@ in
 "Microsoft Word")
   icon_result=":microsoft_word:"
   ;;
+"Microsoft Teams")
+  icon_result=":microsoft_teams:"
+  ;;
 "Iris")
   icon_result=":iris:"
   ;;
@@ -185,7 +188,7 @@ case $@ in
 "Bitwarden")
   icon_result=":bit_warden:"
   ;;
-"System Preferences")
+"System Preferences" | "System Settings")
   icon_result=":gear:"
   ;;
 "Discord" | "Discord Canary" | "Discord PTB")
@@ -212,7 +215,7 @@ case $@ in
 "Blender")
   icon_result=":blender:"
   ;;
-"Canary Mail" | "HEY" | "Mail" | "Mailspring" | "MailMate" | "邮件")
+"Canary Mail" | "HEY" | "Mail" | "Mailspring" | "MailMate" | "邮件" | "Outlook")
   icon_result=":mail:"
   ;;
 "Safari" | "Safari Technology Preview")
@@ -375,7 +378,7 @@ case $@ in
   icon_result=":sequel_ace:"
   ;;
 *)
-  icon_result=""
+  icon_result=":default:"
   ;;
 esac
 echo $icon_result
