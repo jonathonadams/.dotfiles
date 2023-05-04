@@ -71,7 +71,7 @@ yabai -m config insert_feedback_color       0xE02d74da # 0xff9dd274
 
 # move some apps automatically to specific spaces
 yabai -m rule --add app="^kitty$" space=^1
-yabai -m rule --add app="^HttPie$" space=^1
+yabai -m rule --add app="^HTTPie$" space=^2
 yabai -m rule --add app="^Code$" space=^2
 yabai -m rule --add app="^Safari$" space=^3
 yabai -m rule --add app="^Google Chrome$" space=^3

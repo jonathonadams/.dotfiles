@@ -24,7 +24,7 @@ if ! tmux has-session -t=$session_name 2> /dev/null; then
     tmux new-session -d -s $session_name -c $selected
 fi
 
-# Attach if not currently in tmux, or swith if you are
+# Attach if not currently in tmux, or switch if you are
 if [[ -z $TMUX ]]; then
     # Not currently attached
     tmux attach-session -t $session_name

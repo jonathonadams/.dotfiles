@@ -12,20 +12,19 @@ alt - l : yabai -m window --focus east
 # Navigation for stacked windows
 alt - p : yabai -m window --focus stack.prev
 alt - n : yabai -m window --focus stack.next
-alt - f : yabai -m window --focus stack.first
-alt - g : yabai -m window --focus stack.last
+# alt - f : yabai -m window --focus stack.first
+# alt - g : yabai -m window --focus stack.last
 
 # fast focus desktop
-meh - left : yabai -m space --focus prev
-meh - right : yabai -m space --focus next
-meh - z : yabai -m space --focus recent
-meh - a : yabai -m space --focus 1
-meh - o : yabai -m space --focus 2
-meh - e : yabai -m space --focus 3
-meh - u : yabai -m space --focus 4
-meh - h : yabai -m space --focus 5
-meh - t : yabai -m space --focus 6
-
+lalt - left : yabai -m space --focus prev
+lalt - right : yabai -m space --focus next
+lalt - a : yabai -m space --focus 1
+lalt - o : yabai -m space --focus 2
+lalt - e : yabai -m space --focus 3
+lalt - u : yabai -m space --focus 4
+lalt - 0x27 : yabai -m space --focus 5 # alt + '
+lalt - 0x2B : yabai -m space --focus 6 # alt + ,
+# lalt - 0x2F : yabai -m space --focus 7 # alt + .
 
 # Equalize size of windows
 lctrl + alt - e : yabai -m space --balance
@@ -58,7 +57,6 @@ shift + lctrl - f : yabai -m space --layout float && \
 # Make window native fullscreen
 alt - f         : yabai -m window --toggle zoom-fullscreen
 shift + alt - f : yabai -m window --toggle native-fullscreen
-
 
 # Events to update sketchybar
 lalt - space : yabai -m window --toggle float; sketchybar --trigger window_focus
