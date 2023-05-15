@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 if [[ -z $STOW_FOLDERS ]]; then
-    STOW_FOLDERS="tmux,git,zsh,yabai,skhd,sketchybar,gh,kitty,nvim,poetry"
+    STOW_FOLDERS="bin,tmux,git,zsh,yabai,skhd,sketchybar,gh,kitty,nvim,poetry"
 fi
 
 if [[ -z $DOTFILES ]]; then
@@ -10,16 +10,11 @@ fi
 
 pushd $DOTFILES
 
-# The 'bin' directory in different in that you don't want the entire directory linked 
-echo "stow dir"  
-stow -D bin
-stow --no-folding bin
-
 for folder in $(echo $STOW_FOLDERS | sed "s/,/ /g")
 do
     echo "stow $folder"
     stow -D $folder
-    stow $folder
+    stow --no-folding $folder
 done
 popd
 
