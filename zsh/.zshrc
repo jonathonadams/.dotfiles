@@ -4,10 +4,6 @@
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
-# Set the nvm directory
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-
 # Add  ~/.local/bin/ to $PATH
 export PATH=$HOME/.local/bin:$PATH
 
@@ -23,12 +19,8 @@ export PATH=$HOME/.cargo/bin:$PATH
 # The next line updates PATH for the Google Cloud SDK.
 export PATH=~/google-cloud-sdk/bin:$PATH
 
-export PYENV_ROOT="$HOME/.pyenv" 
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)" 
-
-
-eval "$(direnv hook zsh)"
+# Init rtx
+eval "$(rtx activate zsh)"
 
 
 # Set name of the theme to load --- if set to "random", it will
@@ -142,4 +134,15 @@ alias vim=nvim
 # Should this be in skhd?
 bindkey -s ^f "tmux-sessions\n"
 
+# Sketchybar interactivity overloads
+function brew() {
+  command brew "$@" 
 
+  if [[ $* =~ "upgrade" ]] || [[ $* =~ "update" ]] || [[ $* =~ "outdated" ]]; then
+    sketchybar --trigger brew_update
+  fi
+}
+
+function zen () {
+  ~/.config/sketchybar/plugins/zen.sh $1
+}

@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+# calculate new hash for the binary
+SHA256=$(shasum -a 256 $(which yabai) | cut -d' ' -f 1)
+# SHA256=$(shasum -a 256 /opt/homebrew/bin/yabai | awk "{print \$1;}")
+echo "New yabai hash: $SHA256"
+
+if [ -f "/private/etc/sudoers.d/yabai" ]; then
+  # replace the hash in-place in the sudoers file
+  sudo sed -i '' -e 's/sha256:[[:alnum:]]*/sha256:'${SHA256}'/' /private/etc/sudoers.d/yabai
+else
+  echo "sudoers file does not exist yet"
+fi
