@@ -24,6 +24,9 @@
     interactive = auto
     diff = auto
 
+[url "git@github.com:"]
+    insteadOf = https://github.com/
+
 [alias]
     co = checkout
     ci = commit

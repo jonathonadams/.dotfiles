@@ -12,6 +12,7 @@ export POETRY_CONFIG_DIR=~/.config/pypoetry
 
 # Set the path to all go src files (this is the default anyway)
 export GOPATH=$HOME/go
+export PATH="$PATH:${GOPATH}/bin"
 
 # Add Rust to environment PATH
 export PATH=$HOME/.cargo/bin:$PATH
@@ -20,7 +21,7 @@ export PATH=$HOME/.cargo/bin:$PATH
 export PATH=~/google-cloud-sdk/bin:$PATH
 
 # Init rtx
-eval "$(rtx activate zsh)"
+eval "$(mise activate zsh)"
 
 
 # Set name of the theme to load --- if set to "random", it will

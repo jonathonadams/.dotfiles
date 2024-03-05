@@ -6,7 +6,7 @@
 # I have found that it is OK to unload the process when using yabai, which makes a 
 # lot of things faster, battery last longer and stops the apple window manager interfering with yabai:
 # https://github.com/koekeishiya/yabai/issues/1297#issuecomment-1318403190
-launchctl unload -F /System/Library/LaunchAgents/com.apple.WindowManager.plist
+# launchctl unload -F /System/Library/LaunchAgents/com.apple.WindowManager.plist
 
 # ===== Loading Scripting Additions ============
 
@@ -43,7 +43,6 @@ yabai -m config mouse_follows_focus         off
 yabai -m config focus_follows_mouse         off
 
 # yabai -m config window_placement            second_child
-yabai -m config window_topmost              off
 yabai -m config window_opacity              off
 yabai -m config window_opacity_duration     0.0
 yabai -m config window_shadow               float
@@ -62,11 +61,6 @@ yabai -m config mouse_drop_action           swap
 
 # ===== Border Settings =========================
 
-yabai -m config window_border               off
-yabai -m config window_border_width         2
-yabai -m config window_border_radius        5
-yabai -m config active_window_border_color  0xE0808080 # 0xffe1e3e4 
-yabai -m config normal_window_border_color  0x00010101 # 0xff2a2f38
 yabai -m config insert_feedback_color       0xE02d74da # 0xff9dd274
 
 # move some apps automatically to specific spaces
@@ -77,6 +71,7 @@ yabai -m rule --add app="^Safari$" space=^3
 yabai -m rule --add app="^Google Chrome$" space=^3
 yabai -m rule --add app="^Firefox$" space=^3
 yabai -m rule --add app="^Brave Browser$" space=^3
+yabai -m rule --add app="^Arc$" space=^3
 yabai -m rule --add app="^Mail$" space=^4
 yabai -m rule --add app="^Calendar$" space=^4
 yabai -m rule --add app="^Slack$" space=5

@@ -2,3 +2,6 @@
 create = true
 in-project = true
 prefer-active-python = true
+
+[experimental]
+system-git-client = true
