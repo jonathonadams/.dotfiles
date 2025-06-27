@@ -16,15 +16,15 @@ alt - n : yabai -m window --focus stack.next
 # alt - g : yabai -m window --focus stack.last
 
 # fast focus desktop
-lalt - left : yabai -m space --focus prev
-lalt - right : yabai -m space --focus next
-lalt - a : yabai -m space --focus 1
-lalt - o : yabai -m space --focus 2
-lalt - e : yabai -m space --focus 3
-lalt - u : yabai -m space --focus 4
-lalt - 0x27 : yabai -m space --focus 5 # alt + '
-lalt - 0x2B : yabai -m space --focus 6 # alt + ,
-# lalt - 0x2F : yabai -m space --focus 7 # alt + .
+# lalt - left : yabai -m space --focus prev
+# lalt - right : yabai -m space --focus next
+ralt - a : yabai -m space --focus 1
+ralt - o : yabai -m space --focus 2
+ralt - e : yabai -m space --focus 3
+ralt - u : yabai -m space --focus 4
+ralt - 0x27 : yabai -m space --focus 5 # `alt + '`
+ralt - 0x2B : yabai -m space --focus 6 # `alt + ,`
+ralt - 0x2F : yabai -m space --focus 7 # `alt + .`
 
 # Equalize size of windows
 lctrl + alt - e : yabai -m space --balance
